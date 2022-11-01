@@ -3,6 +3,7 @@ from cgitb import text
 from tkinter import *
 import conexion
 import formulario
+import ventanas
 from tkinter import messagebox
 
 root = Tk()
@@ -18,29 +19,29 @@ def createGUI():
     #Main Frame
     mainFrame = Frame(root)
     mainFrame.pack()
-    mainFrame.config(width=480, height=320, bg="#907AD6")
+    mainFrame.config(width=480, height=320, bg="#353535")
 
     #Etiqueta de texto
-    titulo = Label(mainFrame, text="Login de Usuario Onesco", font=("Arial",24), bg="#907AD6", fg="#7FDEFF")
+    titulo = Label(mainFrame, text="Login de Usuario Onesco", font=("Arial",24), bg="#353535", fg="#fcfcfc")
     titulo.grid(column=0, row=0, padx=10, pady=10, columnspan=2)
     #Textos
-    userLabel = Label(mainFrame, text="User: ", bg="#907AD6", fg="#7FDEFF")
+    userLabel = Label(mainFrame, text="Usuario: ", bg="#353535", fg="#fcfcfc")
     userLabel.grid(column=0, row=1)
-    passLabel = Label(mainFrame, text="Password: ", bg="#907AD6", fg="#7FDEFF")
-    passLabel.grid(column=0, row=2)
+    passLabel = Label(mainFrame, text="Contraseña: ", bg="#353535", fg="#fcfcfc")
+    passLabel.grid(column=0, row=3)
 
     #Inputs
     nombreUser.set("")
-    nombreEntry = Entry(mainFrame, textvariable=nombreUser)
-    nombreEntry.grid(column=1, row=1)
+    nombreEntry = Entry(mainFrame, textvariable=nombreUser, width=40, bg="#8b8b8b")
+    nombreEntry.grid(column=0, row=2, columnspan=2)
 
     passUser.set("")
-    passEntry = Entry(mainFrame, textvariable=passUser, show="*")
-    passEntry.grid(column=1, row=2)
+    passEntry = Entry(mainFrame, textvariable=passUser, show="*", width=40, bg="#8b8b8b")
+    passEntry.grid(column=0, row=4, columnspan=2)
 
     #Botones
-    iniciarSessionButton = Button(mainFrame, text="Iniciar Sesión", command=iniciarSesion)
-    iniciarSessionButton.grid(column=1, row=3,ipadx=5, ipady=5, padx=10, pady=10)
+    iniciarSessionButton = Button(mainFrame, text="Ingresar", command=iniciarSesion, bg="#464646", fg="#fcfcfc")
+    iniciarSessionButton.grid(column=1, row=5,ipadx=5, ipady=5, padx=10, pady=10)
     
     
     root.mainloop()
@@ -51,10 +52,8 @@ def iniciarSesion():
         root.withdraw()
 
         if nombreUser.get() == "recepcion":
-            print(1)
-            formulario.formularioRecepcion()
+            ventanas.menuRecepcion()
         elif nombreUser.get() == "taller":
-            print(2)
             formulario.formularioTaller()
     else:
         messagebox.showinfo(message="Hemos tenido problemas al intentar solucionar tu login, intenta ingresar correctamente los datos", title="Problemas para ingresar")

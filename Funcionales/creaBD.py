@@ -24,7 +24,7 @@ def creaBD():
     onesco = 'onesco' in tablas
     if onesco == False:
         cursor1.execute("CREATE DATABASE onesco")
-        cursor1.execute("CREATE TABLE `onesco`.`user` ( `id_user` VARCHAR(255) NOT NULL , `raza` VARCHAR(100) NOT NULL , `puntos` INT NOT NULL , PRIMARY KEY (`id_user`(255))) ENGINE = InnoDB;")
+        cursor1.execute("CREATE TABLE `onesco`.`onesco-login` (`id` INT NOT NULL AUTO_INCREMENT , `user` VARCHAR(45) NOT NULL , `pass` VARCHAR(45) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;")
 
 
 

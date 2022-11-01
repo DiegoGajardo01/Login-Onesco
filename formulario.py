@@ -4,7 +4,7 @@ def salir():
 
 def formularioTaller():
     raiz =Tk()
-    raiz.title("hola mundo")
+    raiz.title("Onesco")
     raiz.geometry("1000x850")
     raiz.config(bg ="gray")
     raiz.config(bd="30")
@@ -49,7 +49,7 @@ def formularioTaller():
 
 def formularioRecepcion():
     raiz =Tk()
-    raiz.title("hola mundo")
+    raiz.title("Onesco")
     raiz.geometry("1000x850")
     raiz.config(bg ="gray")
     raiz.config(bd="30")
@@ -70,7 +70,7 @@ def formularioRecepcion():
     textoage= Entry(miframe,width="30")
     textoage.grid(row="3",column="1")
     iniciarSessionButton = Button(miframe, text="Salir", command=salir)
-    iniciarSessionButton.grid(column=4, row=3,ipadx=5, ipady=5, padx=10, pady=10) 
+    iniciarSessionButton.grid(column=4, row=3,ipadx=5, ipady=5, padx=10, pady=10)
 
 
     cuentas = []
