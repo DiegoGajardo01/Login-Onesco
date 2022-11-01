@@ -21,10 +21,10 @@ def creaBD():
 
 
     #Comprobamos si está la base de datos del user creada
-    owo = 'owo' in tablas
-    if owo == False:
-        cursor1.execute("CREATE DATABASE owo")
-        cursor1.execute("CREATE TABLE `owo`.`user` ( `id_user` VARCHAR(255) NOT NULL , `raza` VARCHAR(100) NOT NULL , `puntos` INT NOT NULL , PRIMARY KEY (`id_user`(255))) ENGINE = InnoDB;")
+    onesco = 'onesco' in tablas
+    if onesco == False:
+        cursor1.execute("CREATE DATABASE onesco")
+        cursor1.execute("CREATE TABLE `onesco`.`user` ( `id_user` VARCHAR(255) NOT NULL , `raza` VARCHAR(100) NOT NULL , `puntos` INT NOT NULL , PRIMARY KEY (`id_user`(255))) ENGINE = InnoDB;")
 
 
 
