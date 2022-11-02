@@ -10,7 +10,7 @@ conexion1=mysql.connector.connect(host="localhost", user="root", passwd="", data
 
 
 
-consulta = "INSERT INTO `onesco-login`(`user`, `pass`) VALUES ('taller', 'taller1')"
+consulta = "INSERT INTO `onesco-login`(`user`, `pass`) VALUES ('recepcion', 'recepcion1')"
 cursor1=conexion1.cursor()
 cursor1.execute(consulta)
 conexion1.commit()

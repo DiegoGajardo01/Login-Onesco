@@ -37,6 +37,8 @@ El pago será vía efectivo o transacción el cual no se necesita que esté dent
 
 Puntos a seguir ahora:
 
+-Rehacer las consultas de la creación de las tablas(Relacionarlas)
+
 -Arreglar bugs de alguns ventanas
 
 -Formateo de los datos en formularios

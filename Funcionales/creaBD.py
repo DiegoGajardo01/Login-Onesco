@@ -25,9 +25,8 @@ def creaBD():
     if onesco == False:
         cursor1.execute("CREATE DATABASE onesco")
         cursor1.execute("CREATE TABLE `onesco`.`onesco-login` (`id` INT NOT NULL AUTO_INCREMENT , `user` VARCHAR(45) NOT NULL , `pass` VARCHAR(45) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;")
-
-
-
+        cursor1.execute("CREATE TABLE `onesco`.`onesco-recepcion-auto` (`chasis` INT NOT NULL , `patente` VARCHAR(45) NOT NULL , `modelo` VARCHAR(45) NOT NULL , `marca` VARCHAR(45) NOT NULL , `año` DATE NOT NULL , PRIMARY KEY (`chasis`)) ENGINE = InnoDB;")
+        cursor1.execute("CREATE TABLE `onesco`.`onesco-recepcion-clientes` (`rut_cliente` INT NOT NULL , `nombre_cliente` VARCHAR(50) NOT NULL , `contacto` INT NOT NULL , PRIMARY KEY (`rut_cliente`)) ENGINE = InnoDB;")
     conexion1.close()
 
 creaBD()
