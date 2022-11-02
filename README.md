@@ -1,7 +1,3 @@
-Usé la paleta de colores de:
-https://coolors.co/dabfff-907ad6-4f518c-2c2a4a-7fdeff
-
-
 #ignore, chuleta pa actualizar repo
 
 
@@ -35,7 +31,8 @@ dato del comprador y los datos del auto y el monto pagado con boletas adjuntas.
 El pago será vía efectivo o transacción el cual no se necesita que esté dentro de la aplicación solo el respaldo de ellos. 
 
 
-=====================================================================================================================
+===========================================================================
+
 
 Puntos a seguir ahora:
 
