@@ -57,18 +57,28 @@ def formularioRecepcion():
     miframe = Frame(raiz,bg="white",width="1000", height="650")
     miframe.pack(fill ="both",expand = "True")
 
-    nombrelable = Label(miframe,text ="Chasis:",font =(16))
-    nombrelable.grid(row="1",column="0")
-    passlabel = Label(miframe,text ="rut:",font =(16))
-    passlabel.grid(row="2",column="0")
-    agelabel = Label(miframe,text ="marca:",font =(16))
-    agelabel.grid(row="3",column="0")
-    textocorreo= Entry(miframe,width="30")
-    textocorreo.grid(row="1",column="1")
-    textopass= Entry(miframe,width="30")
-    textopass.grid(row="2",column="1")
-    textoage= Entry(miframe,width="30")
-    textoage.grid(row="3",column="1")
+    chasislable = Label(miframe,text ="Chasis:",font =(16))
+    chasislable.grid(row="1",column="0")
+    patentelabel = Label(miframe,text ="Patente:",font =(16))
+    patentelabel.grid(row="2",column="0")
+    modelolabel = Label(miframe,text ="Modelo:",font =(16))
+    modelolabel.grid(row="3",column="0")
+    marcalabel = Label(miframe,text ="Marca:",font =(16))
+    marcalabel.grid(row="4",column="0")
+    añolabel = Label(miframe,text ="Año:",font =(16))
+    añolabel.grid(row="5",column="0")
+
+
+    textChasis= Entry(miframe,width="30")
+    textChasis.grid(row="1",column="1")
+    textPatente= Entry(miframe,width="30")
+    textPatente.grid(row="2",column="1")
+    textModelo= Entry(miframe,width="30")
+    textModelo.grid(row="3",column="1")
+    textMarca= Entry(miframe,width="30")
+    textMarca.grid(row="4",column="1")
+    textAño= Entry(miframe,width="30")
+    textAño.grid(row="5",column="1")
     iniciarSessionButton = Button(miframe, text="Salir", command=salir)
     iniciarSessionButton.grid(column=4, row=3,ipadx=5, ipady=5, padx=10, pady=10)
 
@@ -76,17 +86,19 @@ def formularioRecepcion():
     cuentas = []
     def send_data():
         datos = {
-            "Cuenta de Correo": textocorreo.get(),
-            "Contraseña": textopass.get(),
-            "age": textoage.get()
+            "Chasis": textChasis.get(),
+            "Patente": textPatente.get(),
+            "Modelo": textModelo.get(),
+            "Marca": textMarca.get(),
+            "Año": textAño.get()
         }
         cuentas.append(datos)
-    def iniciarSesion():
+    def printData():
         print(cuentas)
     #Botones
-    iniciarSessionButton = Button(miframe, text="Mostrar Datos", command=iniciarSesion)
-    iniciarSessionButton.grid(row="11", column="2")
+    printDataButton = Button(miframe, text="Mostrar Datos", command=printData)
+    printDataButton.grid(row="11", column="2")
 
-    ingresarboton = Button(miframe, text="Ingresar", command=send_data)
+    ingresarboton = Button(miframe, text="Guardar Datos", command=send_data)
     ingresarboton.grid(row="11", column="1")
     raiz.mainloop()

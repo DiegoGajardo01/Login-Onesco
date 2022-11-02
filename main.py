@@ -1,5 +1,4 @@
 #Imports
-from cgitb import text
 from tkinter import *
 import conexion
 import formulario
