@@ -132,7 +132,7 @@ def tablaRecepcion():
                                   passwd="", 
                                   database="onesco")
     cursor1=conexion1.cursor()
-    sql = "select * from `onesco-recepcion-auto`"
+    sql = "select * from `onesco_recepcion_auto`"
     cursor1.execute(sql)
     a = cursor1.fetchall()
     print(a)

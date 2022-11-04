@@ -14,7 +14,7 @@ def validarUser(usuario, contra):
         user = ""
         valid = None
 
-        cursor1.execute(f"SELECT user FROM `onesco-login` WHERE user = '{usuario}' ")
+        cursor1.execute(f"SELECT user FROM `onesco_login` WHERE user = '{usuario}' ")
         for base in cursor1:
             user=str(base)
             elim=['(',')',',',"'"]
@@ -22,7 +22,7 @@ def validarUser(usuario, contra):
                 user = user.replace(i, '')
         
 
-        cursor1.execute(f"SELECT pass FROM `onesco-login` WHERE user = '{usuario}' ")
+        cursor1.execute(f"SELECT pass FROM `onesco_login` WHERE user = '{usuario}' ")
         for base in cursor1:
             password=str(base)
             elim=['(',')',',',"'"]

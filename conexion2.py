@@ -8,7 +8,7 @@ conexion1=mysql.connector.connect(host="localhost",
 usuario = input("Ingresa Usuario:")
 user = ""
 cursor1=conexion1.cursor()
-cursor1.execute(f"SELECT user FROM `onesco-login` WHERE user = '{usuario}' ")
+cursor1.execute(f"SELECT user FROM `onesco_login` WHERE user = '{usuario}' ")
 for base in cursor1:
     user=str(base)
     elim=['(',')',',',"'"]
