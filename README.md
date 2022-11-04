@@ -44,3 +44,11 @@ Puntos a seguir ahora:
 -Formateo de los datos en formularios
 
 -Crear ventana de mostrado de datos
+
+
+===========================================================================
+
+
+Corrección nombre de base de datos (- => _)
+Agregar boton de mostrar datos
+Correción de cerrar cursor
