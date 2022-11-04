@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk
-from turtle import width
+from tkinter import messagebox
 import mysql.connector
 import ventanas
 
@@ -109,20 +109,22 @@ def formularioRecepcion():
         Marca = textMarca.get()
         Año = textAño.get()
         Precio = textPrecio.get()
-
-        cursor1=conexion1.cursor()
-        sql = "INSERT INTO `onesco_recepcion_auto`(`chasis`, `patente`, `modelo`, `marca`, `año`, `precio`) VALUES (%s,%s,%s,%s,%s,%s)"
-        datos=(Chasis,Patente,Modelo,Marca,Año,Precio)
-        cursor1.execute(sql, datos)
-        conexion1.commit()
-        conexion1.close()
-        textChasis.delete(0, END)
-        textPatente.delete(0, END)
-        textModelo.delete(0, END)
-        textMarca.delete(0, END)
-        textAño.delete(0, END)
-        textPrecio.delete(0, END)
-        #textChasis.focus()  <-- Para hacer que esté esperando texto en chasis una vez enviado
+        if Año.isdigit() == True and Precio.isdigit() == True:
+            cursor1=conexion1.cursor()
+            sql = "INSERT INTO `onesco_recepcion_auto`(`chasis`, `patente`, `modelo`, `marca`, `año`, `precio`) VALUES (%s,%s,%s,%s,%s,%s)"
+            datos=(Chasis,Patente,Modelo,Marca,Año,Precio)
+            cursor1.execute(sql, datos)
+            conexion1.commit()
+            conexion1.close()
+            textChasis.delete(0, END)
+            textPatente.delete(0, END)
+            textModelo.delete(0, END)
+            textMarca.delete(0, END)
+            textAño.delete(0, END)
+            textPrecio.delete(0, END)
+            #textChasis.focus()  <-- Para hacer que esté esperando texto en chasis una vez enviado
+        else:
+            messagebox.showinfo(message="Hemos tenido problemas al intentar ingresar datos, por favor en AÑO y PRECIO introduce SOLO VALORES NUMERICOS, Sin Usar ni puntos ni comas", title="Problemas para ingresar datos")
 
     
 
