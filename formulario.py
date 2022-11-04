@@ -111,7 +111,7 @@ def formularioRecepcion():
         Precio = textPrecio.get()
         if Año.isdigit() == True and Precio.isdigit() == True:
             cursor1=conexion1.cursor()
-            sql = "INSERT INTO `onesco_recepcion_auto`(`chasis`, `patente`, `modelo`, `marca`, `año`, `precio`) VALUES (%s,%s,%s,%s,%s,%s)"
+            sql = "INSERT INTO `onesco_autos`(`chasis`, `patente`, `modelo`, `marca`, `año`, `precio`) VALUES (%s,%s,%s,%s,%s,%s)"
             datos=(Chasis,Patente,Modelo,Marca,Año,Precio)
             cursor1.execute(sql, datos)
             conexion1.commit()
@@ -176,7 +176,7 @@ def tablaRecepcion():
                                   database="onesco")
 
     cursor1=conexion1.cursor()
-    sql = "select * from `onesco_recepcion_auto`"
+    sql = "select * from `onesco_autos`"
     cursor1.execute(sql)
     a = cursor1.fetchall()
     for i in a:
@@ -186,3 +186,5 @@ def tablaRecepcion():
 
     volverButton = Button(miframe, text="Volver", command=volver)
     volverButton.grid(column=4, row=3,ipadx=5, ipady=5, padx=10, pady=10)
+
+#============================================================================
