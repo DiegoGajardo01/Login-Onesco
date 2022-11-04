@@ -1,10 +1,14 @@
 from tkinter import *
 from tkinter import ttk
+from turtle import width
 import mysql.connector
+import ventanas
 
 
 def salir():
     exit()
+
+
 
 def formularioTaller():
     raiz =Tk()
@@ -83,7 +87,9 @@ def formularioRecepcion():
     textMarca.grid(row="4",column="1")
     textAño= Entry(miframe,width="30")
     textAño.grid(row="5",column="1")
-    iniciarSessionButton = Button(miframe, text="Salir", command=salir)
+    def volver():
+        raiz.withdraw()
+    iniciarSessionButton = Button(miframe, text="Volver", command=volver)
     iniciarSessionButton.grid(column=4, row=3,ipadx=5, ipady=5, padx=10, pady=10)
 
 
@@ -97,10 +103,10 @@ def formularioRecepcion():
             "Año": textAño.get()
         }
         cuentas.append(datos)
-    def printData():
-        print(cuentas)
+    
+
     #Botones
-    printDataButton = Button(miframe, text="Mostrar Datos", command=printData)
+    printDataButton = Button(miframe, text="Mostrar Datos", command=tablaRecepcion)
     printDataButton.grid(row="11", column="2")
 
     ingresarboton = Button(miframe, text="Guardar Datos", command=send_data)
@@ -117,15 +123,26 @@ def tablaRecepcion():
     miframe = Frame(raiz,bg="gray",width="1000", height="650")
     miframe.pack(fill ="both",expand = "True")
 
-    lista = ttk.Treeview( miframe, columns=(1,2,3,4,5,6), show="headings", height="8")
+    def volver():
+        raiz.withdraw()
+
+    lista = ttk.Treeview( miframe, columns=(1,2,3,4,5,6,7), show="headings", height="8")
     
-    lista.heading(1, text="Chasis")
-    lista.heading(2, text="Patente")
-    lista.heading(3, text="Modelo")
-    lista.heading(4, text="Marca")
-    lista.heading(5, text="Año")
-    lista.heading(6, text="Precio")
-    lista.heading(2, anchor=CENTER)
+    lista.column(1, width=100)
+    lista.column(2, width=100)
+    lista.column(3, width=100)
+    lista.column(4, width=100)
+    lista.column(5, width=100)
+    lista.column(6, width=100)
+    lista.column(7, width=100)
+
+    lista.heading(1, text="Chasis", anchor=CENTER)
+    lista.heading(2, text="Patente", anchor=CENTER)
+    lista.heading(3, text="Modelo", anchor=CENTER)
+    lista.heading(4, text="Marca", anchor=CENTER)
+    lista.heading(5, text="Año", anchor=CENTER)
+    lista.heading(6, text="Precio", anchor=CENTER)
+    lista.heading(7, text="Dueño", anchor=CENTER)
 
     conexion1=mysql.connector.connect(host="localhost", 
                                   user="root", 
@@ -141,5 +158,5 @@ def tablaRecepcion():
     cursor1.close()
     lista.place(x=1, y=90)
 
-
-    
+    volverButton = Button(miframe, text="Volver", command=volver)
+    volverButton.grid(column=4, row=3,ipadx=5, ipady=5, padx=10, pady=10)
