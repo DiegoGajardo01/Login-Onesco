@@ -5,8 +5,14 @@ import mysql.connector
 import ventanas
 
 
+conexion1=mysql.connector.connect(host="localhost", 
+                                  user="root", 
+                                  passwd="", 
+                                  database="onesco")
+
 def salir():
     exit()
+
 
 
 
@@ -75,6 +81,8 @@ def formularioRecepcion():
     marcalabel.grid(row="4",column="0")
     añolabel = Label(miframe,text ="Año:",font =(16))
     añolabel.grid(row="5",column="0")
+    preciolabel = Label(miframe,text ="Precio:",font =(16))
+    preciolabel.grid(row="6",column="0")
 
 
     textChasis= Entry(miframe,width="30")
@@ -87,30 +95,39 @@ def formularioRecepcion():
     textMarca.grid(row="4",column="1")
     textAño= Entry(miframe,width="30")
     textAño.grid(row="5",column="1")
+    textPrecio= Entry(miframe,width="30")
+    textPrecio.grid(row="6",column="1")
+    
     def volver():
         raiz.withdraw()
-    iniciarSessionButton = Button(miframe, text="Volver", command=volver)
-    iniciarSessionButton.grid(column=4, row=3,ipadx=5, ipady=5, padx=10, pady=10)
 
-
-    cuentas = []
+    
     def send_data():
-        datos = {
-            "Chasis": textChasis.get(),
-            "Patente": textPatente.get(),
-            "Modelo": textModelo.get(),
-            "Marca": textMarca.get(),
-            "Año": textAño.get()
-        }
-        cuentas.append(datos)
+        Chasis = textChasis.get()
+        Patente = textPatente.get()
+        Modelo = textModelo.get()
+        Marca = textMarca.get()
+        Año = textAño.get()
+        Precio = textPrecio.get()
+
+        cursor1=conexion1.cursor()
+        sql = "INSERT INTO `onesco_recepcion_auto`(`chasis`, `patente`, `modelo`, `marca`, `año`, `precio`) VALUES (%s,%s,%s,%s,%s,%s)"
+        datos=(Chasis,Patente,Modelo,Marca,Año,Precio)
+        cursor1.execute(sql, datos)
+        conexion1.commit()
+        conexion1.close()    
+
     
 
     #Botones
+    volverButton = Button(miframe, text="Volver", command=volver)
+    volverButton.grid(column=7, row=3,ipadx=5, ipady=5, padx=10, pady=10)
+
     printDataButton = Button(miframe, text="Mostrar Datos", command=tablaRecepcion)
-    printDataButton.grid(row="11", column="2")
+    printDataButton.grid(row="10", column="3")
 
     ingresarboton = Button(miframe, text="Guardar Datos", command=send_data)
-    ingresarboton.grid(row="11", column="1")
+    ingresarboton.grid(row="10", column="3")
     raiz.mainloop()
 
 def tablaRecepcion():
@@ -143,20 +160,20 @@ def tablaRecepcion():
     lista.heading(5, text="Año", anchor=CENTER)
     lista.heading(6, text="Precio", anchor=CENTER)
     lista.heading(7, text="Dueño", anchor=CENTER)
-
+    
     conexion1=mysql.connector.connect(host="localhost", 
                                   user="root", 
                                   passwd="", 
                                   database="onesco")
+
     cursor1=conexion1.cursor()
     sql = "select * from `onesco_recepcion_auto`"
     cursor1.execute(sql)
     a = cursor1.fetchall()
-    print(a)
     for i in a:
         lista.insert('','end', values=i)
-    cursor1.close()
     lista.place(x=1, y=90)
+    cursor1.close()
 
     volverButton = Button(miframe, text="Volver", command=volver)
     volverButton.grid(column=4, row=3,ipadx=5, ipady=5, padx=10, pady=10)
