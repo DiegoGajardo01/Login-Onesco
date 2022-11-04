@@ -10,11 +10,16 @@
  git push origin main
  
 ===========================================================================
+Login (onesco_login): ID (AI) PK, user varchar(50), pass varchar(50)
 
-Recepcion auto: su patente, número de chasis, marca, modelo, año.
+
+(Fijarse en los NOT NULL)
 
 
-Datos el dueño: también se registran, que son nombres, Rut, apellidos, contacto y dirección.
+Recepcion Dueño: rut_cliente varchar(10) PK, nombre_cliente varchar(50), contacto varchar(10)
+
+
+Recepcion auto: chasis varchar(60) PK, patente varchar(45), modelo varchar(45), marca varchar(45), año int, precio int, rut_dueño varchar(10) FK
 
 
 Autos(where disponible and estado=bueno): disponibilidad, modelo, precio, kilometraje. 
@@ -39,16 +44,7 @@ Puntos a seguir ahora:
 
 -Rehacer las consultas de la creación de las tablas(Relacionarlas)
 
--Arreglar bugs de alguns ventanas
 
--Formateo de los datos en formularios
-
--Crear ventana de mostrado de datos
-
+-Rehacer las tablas, y con eso, cambiar la logica de la programación
 
 ===========================================================================
-
-
-Corrección nombre de base de datos (- => _)
-Agregar boton de mostrar datos
-Correción de cerrar cursor

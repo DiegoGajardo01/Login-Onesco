@@ -115,7 +115,14 @@ def formularioRecepcion():
         datos=(Chasis,Patente,Modelo,Marca,Año,Precio)
         cursor1.execute(sql, datos)
         conexion1.commit()
-        conexion1.close()    
+        conexion1.close()
+        textChasis.delete(0, END)
+        textPatente.delete(0, END)
+        textModelo.delete(0, END)
+        textMarca.delete(0, END)
+        textAño.delete(0, END)
+        textPrecio.delete(0, END)
+        #textChasis.focus()  <-- Para hacer que esté esperando texto en chasis una vez enviado
 
     
 
@@ -127,7 +134,7 @@ def formularioRecepcion():
     printDataButton.grid(row="10", column="3")
 
     ingresarboton = Button(miframe, text="Guardar Datos", command=send_data)
-    ingresarboton.grid(row="10", column="3")
+    ingresarboton.grid(row="10", column="4")
     raiz.mainloop()
 
 def tablaRecepcion():
