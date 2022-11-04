@@ -1,4 +1,8 @@
 from tkinter import *
+from tkinter import ttk
+import mysql.connector
+
+
 def salir():
     exit()
 
@@ -25,7 +29,7 @@ def formularioTaller():
     textoage= Entry(miframe,width="30")
     textoage.grid(row="3",column="1")
     iniciarSessionButton = Button(miframe, text="Salir", command=salir)
-    iniciarSessionButton.grid(column=4, row=3,ipadx=5, ipady=5, padx=10, pady=10) 
+    iniciarSessionButton.grid(column=4, row=3,ipadx=5, ipady=5, padx=10, pady=10)
 
 
     cuentas = []
@@ -102,3 +106,40 @@ def formularioRecepcion():
     ingresarboton = Button(miframe, text="Guardar Datos", command=send_data)
     ingresarboton.grid(row="11", column="1")
     raiz.mainloop()
+
+def tablaRecepcion():
+    raiz =Tk()
+    raiz.title("Onesco")
+    raiz.geometry("1250x850")
+    raiz.config(bg ="gray")
+    raiz.config(bd="30")
+    raiz.config(relief="groove")
+    miframe = Frame(raiz,bg="gray",width="1000", height="650")
+    miframe.pack(fill ="both",expand = "True")
+
+    lista = ttk.Treeview( miframe, columns=(1,2,3,4,5,6), show="headings", height="8")
+    
+    lista.heading(1, text="Chasis")
+    lista.heading(2, text="Patente")
+    lista.heading(3, text="Modelo")
+    lista.heading(4, text="Marca")
+    lista.heading(5, text="Año")
+    lista.heading(6, text="Precio")
+    lista.heading(2, anchor=CENTER)
+
+    conexion1=mysql.connector.connect(host="localhost", 
+                                  user="root", 
+                                  passwd="", 
+                                  database="onesco")
+    cursor1=conexion1.cursor()
+    sql = "select * from `onesco-recepcion-auto`"
+    cursor1.execute(sql)
+    a = cursor1.fetchall()
+    print(a)
+    for i in a:
+        lista.insert('','end', values=i)
+    cursor1.close()
+    lista.place(x=1, y=90)
+
+
+    

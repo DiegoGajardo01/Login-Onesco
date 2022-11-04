@@ -1,3 +1,4 @@
+#pip install mysql-connector-python
 import mysql.connector
 
 conexion1=mysql.connector.connect(host="localhost", 
@@ -31,4 +32,4 @@ def validarUser(usuario, contra):
             return True
         else:
             return False
-        conexion1.close()
+    conexion1.close()

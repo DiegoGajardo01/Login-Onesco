@@ -1,6 +1,7 @@
 from tkinter import *
 import formulario
 
+
 def salir():
     exit()
 
@@ -13,6 +14,9 @@ def menuRecepcion():
 
     ingresarDatosButton = Button(miframe, text="Ingresar Datos", command=formulario.formularioRecepcion, bg="#464646", fg="#fcfcfc")
     ingresarDatosButton.grid(column=2, row=3,ipadx=5, ipady=5, padx=10, pady=10)
+
+    mostrarDatosButton = Button(miframe, text="Mostrar Datos", command=formulario.tablaRecepcion, bg="#464646", fg="#fcfcfc")
+    mostrarDatosButton.grid(column=6, row=3,ipadx=5, ipady=5, padx=10, pady=10)
     
     iniciarSessionButton = Button(miframe, text="Salir", command=salir, bg="#464646", fg="#fcfcfc")
     iniciarSessionButton.grid(column=4, row=3,ipadx=5, ipady=5, padx=10, pady=10)
