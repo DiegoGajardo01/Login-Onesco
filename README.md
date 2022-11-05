@@ -32,4 +32,23 @@ Puntos a seguir ahora:
 - Validación de rut cuando ingresa cliente lista, faltaría validar si el rut, está en la tabla o no (cuando ingresa Auto)
 
 
+- Realizar dentro de recepcion actualizar los datos.
+
+
+- Recepcion: Agregar "estado" en la visualizacion de la tabla de datos de autos y dejar que muestre el precio final pero q no se pueda editar
+
+
+- Al eliminar sin datos(ninguna fila seleccionada) se puede corromper el programa
+
+
+- Crear usuario: Bodega.
+
+
+- bodega tablas: visualizar y tambien editar: piezas - autos.
+
+
+- Tecnico, ingresar solamente estado y precio final, ver la tabla de bodega.(autos)
+
+
+- agregar imagen de icono y de estetica.
 ===========================================================================

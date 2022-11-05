@@ -262,9 +262,34 @@ def tablaRecepcion():
     for i in a:
         lista.insert('','end', values=i)
     lista.place(x=1, y=90)
+
+    
+    def eliminar_fila():
+        conexion1=mysql.connector.connect(host="localhost", 
+                                  user="root", 
+                                  passwd="", 
+                                  database="onesco")
+
+        cursor1=conexion1.cursor()
+        curItem = lista.focus()
+        diccio = lista.item(curItem)
+
+        dic1=diccio.get('values')
+        datos1 = dic1[0]
+        datos1=str(datos1)
+
+        sql1 = "DELETE FROM `onesco_autos` WHERE `onesco_autos`.`chasis` = '{}'".format(datos1)
+        cursor1.execute(sql1)
+
+        fila = lista.selection()
+        if len(fila) !=0:
+            lista.delete(fila)
+        conexion1.commit()
     cursor1.close()
 
     volverButton = Button(miframe, text="Volver", command=volver)
     volverButton.grid(column=4, row=3,ipadx=5, ipady=5, padx=10, pady=10)
+    BorrarButton = Button(miframe, text="Borrar Fila", command=eliminar_fila)
+    BorrarButton.grid(column=5, row=3,ipadx=5, ipady=5, padx=10, pady=10)
 
 #============================================================================
