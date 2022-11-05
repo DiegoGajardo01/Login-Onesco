@@ -3,7 +3,7 @@ from tkinter.ttk import Notebook, Style, Treeview
 from tkinter import messagebox
 import mysql.connector
 import ventanas
-
+import valid
 
 conexion1=mysql.connector.connect(host="localhost", 
                                   user="root", 
@@ -64,7 +64,7 @@ def formularioTaller():
 def formularioRecepcion():
     raiz =Tk()
     raiz.title("Onesco")
-    raiz.geometry("1000x850")
+    raiz.geometry("600x500")
     raiz.config(bg ="gray")
     raiz.config(bd="30")
     raiz.config(relief="groove")
@@ -100,20 +100,29 @@ def formularioRecepcion():
     textContacto.grid(row="3",column="1")
 
     def send_data_cliente():
-        Rut = textRut.get()
-        Nombres = textNombres.get()
-        Contacto = textContacto.get()
+        if valid.validarRut(textRut.get()) == None:
+            messagebox.showinfo(message="Ingresa un rut Valido", title="Problemas al ingresar RUT")
+        else:
+            Rut = valid.validarRut(textRut.get())
+            Nombres = textNombres.get()
+            Contacto = textContacto.get()
+            
+
+            conexion1=mysql.connector.connect(host="localhost", 
+                                  user="root", 
+                                  passwd="", 
+                                  database="onesco")
         
-        cursor1=conexion1.cursor()
-        sql = "INSERT INTO `onesco_recepcion_clientes`(`rut_cliente`, `nombre_cliente`, `contacto`) VALUES (%s,%s,%s)"
-        datos=(Rut, Nombres, Contacto)
-        cursor1.execute(sql, datos)
-        conexion1.commit()
-        conexion1.close()
-        textRut.delete(0, END)
-        textNombres.delete(0, END)
-        textContacto.delete(0, END)
-        #textChasis.focus()  <-- Para hacer que esté esperando texto en chasis una vez enviado
+            cursor1=conexion1.cursor()
+            sql = "INSERT INTO `onesco_recepcion_clientes`(`rut_cliente`, `nombre_cliente`, `contacto`) VALUES (%s,%s,%s)"
+            datos=(Rut, Nombres, Contacto)
+            cursor1.execute(sql, datos)
+            conexion1.commit()
+            conexion1.close()
+            textRut.delete(0, END)
+            textNombres.delete(0, END)
+            textContacto.delete(0, END)
+            #textChasis.focus()  <-- Para hacer que esté esperando texto en chasis una vez enviado
         
 
     #Botones
@@ -172,6 +181,11 @@ def formularioRecepcion():
         Precio = textPrecio.get()
         RutDu = textRutDu.get()
         if Año.isdigit() == True and Precio.isdigit() == True:
+
+            conexion1=mysql.connector.connect(host="localhost", 
+                                  user="root", 
+                                  passwd="", 
+                                  database="onesco")
             cursor1=conexion1.cursor()
             sql = "INSERT INTO `onesco_autos`(`chasis`, `patente`, `modelo`, `marca`, `año`, `kilometraje`, `precio`, `rut_dueño`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
             datos=(Chasis,Patente,Modelo,Marca,Año, KiloM, Precio, RutDu)
@@ -206,7 +220,7 @@ def formularioRecepcion():
 def tablaRecepcion():
     raiz =Tk()
     raiz.title("Onesco")
-    raiz.geometry("1250x850")
+    raiz.geometry("1200x600")
     raiz.config(bg ="gray")
     raiz.config(bd="30")
     raiz.config(relief="groove")
