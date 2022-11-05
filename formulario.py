@@ -68,34 +68,40 @@ def formularioRecepcion():
     raiz.config(bg ="gray")
     raiz.config(bd="30")
     raiz.config(relief="groove")
-    miframe = Frame(raiz,bg="white",width="1000", height="650")
-    miframe.pack(fill ="both",expand = "True")
 
-    chasislable = Label(miframe,text ="Chasis:",font =(16))
+    nb = ttk.Notebook(raiz)
+    nb.pack(fill='both', expand='yes')
+    pes0 = ttk.Frame(nb)
+    pes1 = ttk.Frame(nb)
+
+    nb.add(pes0, text="Clientes")
+    nb.add(pes1, text="Autos")
+    
+    chasislable = Label(pes1,text ="Chasis:",font =(16))
     chasislable.grid(row="1",column="0")
-    patentelabel = Label(miframe,text ="Patente:",font =(16))
+    patentelabel = Label(pes1,text ="Patente:",font =(16))
     patentelabel.grid(row="2",column="0")
-    modelolabel = Label(miframe,text ="Modelo:",font =(16))
+    modelolabel = Label(pes1,text ="Modelo:",font =(16))
     modelolabel.grid(row="3",column="0")
-    marcalabel = Label(miframe,text ="Marca:",font =(16))
+    marcalabel = Label(pes1,text ="Marca:",font =(16))
     marcalabel.grid(row="4",column="0")
-    añolabel = Label(miframe,text ="Año:",font =(16))
+    añolabel = Label(pes1,text ="Año:",font =(16))
     añolabel.grid(row="5",column="0")
-    preciolabel = Label(miframe,text ="Precio:",font =(16))
+    preciolabel = Label(pes1,text ="Precio:",font =(16))
     preciolabel.grid(row="6",column="0")
 
 
-    textChasis= Entry(miframe,width="30")
+    textChasis= Entry(pes1,width="30")
     textChasis.grid(row="1",column="1")
-    textPatente= Entry(miframe,width="30")
+    textPatente= Entry(pes1,width="30")
     textPatente.grid(row="2",column="1")
-    textModelo= Entry(miframe,width="30")
+    textModelo= Entry(pes1,width="30")
     textModelo.grid(row="3",column="1")
-    textMarca= Entry(miframe,width="30")
+    textMarca= Entry(pes1,width="30")
     textMarca.grid(row="4",column="1")
-    textAño= Entry(miframe,width="30")
+    textAño= Entry(pes1,width="30")
     textAño.grid(row="5",column="1")
-    textPrecio= Entry(miframe,width="30")
+    textPrecio= Entry(pes1,width="30")
     textPrecio.grid(row="6",column="1")
     
     def volver():
@@ -129,13 +135,13 @@ def formularioRecepcion():
     
 
     #Botones
-    volverButton = Button(miframe, text="Volver", command=volver)
+    volverButton = Button(pes1, text="Volver", command=volver)
     volverButton.grid(column=7, row=3,ipadx=5, ipady=5, padx=10, pady=10)
 
-    printDataButton = Button(miframe, text="Mostrar Datos", command=tablaRecepcion)
+    printDataButton = Button(pes1, text="Mostrar Datos", command=tablaRecepcion)
     printDataButton.grid(row="10", column="3")
 
-    ingresarboton = Button(miframe, text="Guardar Datos", command=send_data)
+    ingresarboton = Button(pes1, text="Guardar Datos", command=send_data)
     ingresarboton.grid(row="10", column="4")
     raiz.mainloop()
 
