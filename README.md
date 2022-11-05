@@ -28,9 +28,6 @@ Recepcion auto(onesco_recepcion_cliente): chasis varchar(60) PK, patente varchar
 
 Puntos a seguir ahora:
 
--Rehacer las consultas de la creación de las tablas(Relacionarlas)
 
-
--Rehacer las tablas, y con eso, cambiar la logica de la programación
-
+-
 ===========================================================================
