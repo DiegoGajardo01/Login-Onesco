@@ -9,6 +9,7 @@ def menuRecepcion():
     raiz1 =Tk()
     raiz1.title("Onesco")
     raiz1.geometry("480x220")
+    raiz1.iconbitmap("medios/Auto.ico")
     miframe = Frame(raiz1,bg="gray",width="480", height="220")
     miframe.pack(fill ="both",expand = "True")
 

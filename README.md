@@ -50,5 +50,7 @@ Puntos a seguir ahora:
 - Tecnico, ingresar solamente estado y precio final, ver la tabla de bodega.(autos)
 
 
-- agregar imagen de icono y de estetica.
+- **agregar imagen de icono y de estetica. ✓**
+
+
 ===========================================================================

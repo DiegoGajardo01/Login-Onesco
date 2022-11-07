@@ -12,13 +12,21 @@ passUser = StringVar()
 
 def createGUI():
     #Ventana Main
-    root.title("Login")
-    root.config(bg="#4F518C")
+    root.title("Bienvenidos a Onesco")
+    root.config(bg="#353535")
+    root.iconbitmap("medios/Auto.ico")
+
+    #Images
+    image=PhotoImage(file="medios/Auto.gif")
+    image=image.subsample(2,2)
+    label=Label(image=image)
+    label.pack()
 
     #Main Frame
     mainFrame = Frame(root)
     mainFrame.pack()
     mainFrame.config(width=480, height=320, bg="#353535")
+    
 
     #Etiqueta de texto
     titulo = Label(mainFrame, text="Login de Usuario Onesco", font=("Arial",24), bg="#353535", fg="#fcfcfc")
@@ -26,7 +34,7 @@ def createGUI():
     #Textos
     userLabel = Label(mainFrame, text="Usuario: ", bg="#353535", fg="#fcfcfc")
     userLabel.grid(column=0, row=1)
-    passLabel = Label(mainFrame, text="Contraseña: ", bg="#353535", fg="#fcfcfc")
+    passLabel = Label(mainFrame, text="      Contraseña: ", bg="#353535", fg="#fcfcfc")
     passLabel.grid(column=0, row=3)
 
     #Inputs

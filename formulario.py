@@ -23,6 +23,8 @@ def formularioTaller():
     raiz.config(bg ="gray")
     raiz.config(bd="30")
     raiz.config(relief="groove")
+    raiz.iconbitmap("medios/Auto.ico")
+
     miframe = Frame(raiz,bg="white",width="1000", height="650")
     miframe.pack(fill ="both",expand = "True")
 
@@ -68,6 +70,7 @@ def formularioRecepcion():
     raiz.config(bg ="gray")
     raiz.config(bd="30")
     raiz.config(relief="groove")
+    raiz.iconbitmap("medios/Auto.ico")
 
 
     nb = Notebook(raiz)
@@ -224,6 +227,8 @@ def tablaRecepcion():
     raiz.config(bg ="gray")
     raiz.config(bd="30")
     raiz.config(relief="groove")
+    raiz.iconbitmap("medios/Auto.ico")
+    
     miframe = Frame(raiz,bg="gray",width="1000", height="650")
     miframe.pack(fill ="both",expand = "True")
 
