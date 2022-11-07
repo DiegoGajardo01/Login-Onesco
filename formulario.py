@@ -24,10 +24,10 @@ def formularioTaller():
     raiz.config(bd="30")
     raiz.config(relief="groove")
     raiz.iconbitmap("medios/Auto.ico")
-
+    
     miframe = Frame(raiz,bg="white",width="1000", height="650")
     miframe.pack(fill ="both",expand = "True")
-
+    
     nombrelable = Label(miframe,text ="Cuenta de Correo:",font =(16))
     nombrelable.grid(row="1",column="0")
     passlabel = Label(miframe,text ="Contraseña:",font =(16))
@@ -227,10 +227,9 @@ def tablaRecepcion():
     raiz.config(bg ="gray")
     raiz.config(bd="30")
     raiz.config(relief="groove")
-    raiz.iconbitmap("medios/Auto.ico")
-    
     miframe = Frame(raiz,bg="gray",width="1000", height="650")
     miframe.pack(fill ="both",expand = "True")
+    raiz.iconbitmap("medios/Auto.ico")
 
     def volver():
         raiz.withdraw()
@@ -292,9 +291,129 @@ def tablaRecepcion():
         conexion1.commit()
     cursor1.close()
 
+
+    def editar_formulario(d1, d2, d3, d4, d5, d6, d7):
+        raiz =Tk()
+        raiz.title("Onesco")
+        raiz.geometry("600x500")
+        raiz.config(bg ="gray")
+        raiz.config(bd="30")
+        raiz.config(relief="groove")
+        raiz.iconbitmap("medios/Auto.ico")
+
+        pes1 = Frame(raiz,bg="white",width="1000", height="650")
+        pes1.pack(fill ="both",expand = "True")
+
+        chasislable = Label(pes1,text ="Chasis:",font =(16))
+        chasislable.grid(row="1",column="0")
+        patentelabel = Label(pes1,text ="Patente:",font =(16))
+        patentelabel.grid(row="2",column="0")
+        modelolabel = Label(pes1,text ="Modelo:",font =(16))
+        modelolabel.grid(row="3",column="0")
+        marcalabel = Label(pes1,text ="Marca:",font =(16))
+        marcalabel.grid(row="4",column="0")
+        añolabel = Label(pes1,text ="Año:",font =(16))
+        añolabel.grid(row="5",column="0")
+        klmlabel = Label(pes1,text ="Kilometraje:",font =(16))
+        klmlabel.grid(row="6",column="0")
+        preciolabel = Label(pes1,text ="Precio:",font =(16))
+        preciolabel.grid(row="7",column="0")
+
+
+        textChasis= Entry(pes1,width="30")
+        textChasis.grid(row="1",column="1")
+        textChasis.insert(0, d1)
+
+        textPatente= Entry(pes1,width="30")
+        textPatente.grid(row="2",column="1")
+        textPatente.insert(0, d2)
+
+        textModelo= Entry(pes1,width="30")
+        textModelo.grid(row="3",column="1")
+        textModelo.insert(0, d3)
+
+        textMarca= Entry(pes1,width="30")
+        textMarca.grid(row="4",column="1")
+        textMarca.insert(0, d4)
+
+        textAño= Entry(pes1,width="30")
+        textAño.grid(row="5",column="1")
+        textAño.insert(0, d5)
+
+        textKlm= Entry(pes1,width="30")
+        textKlm.grid(row="6",column="1")
+        textKlm.insert(0, d6)
+
+        textPrecio= Entry(pes1,width="30")
+        textPrecio.grid(row="7",column="1")
+        textPrecio.insert(0, d7)
+
+        def update_data_auto():
+            Chasis = textChasis.get()
+            Patente = textPatente.get()
+            Modelo = textModelo.get()
+            Marca = textMarca.get()
+            Año = textAño.get()
+            KiloM = textKlm.get()
+            Precio = textPrecio.get()
+            if Año.isdigit() == True and Precio.isdigit() == True:
+
+                conexion1=mysql.connector.connect(host="localhost", 
+                                    user="root", 
+                                    passwd="", 
+                                    database="onesco")
+                cursor1=conexion1.cursor()
+                sql = "UPDATE `onesco_autos` SET `chasis`= %s,`patente`= %s,`modelo`= %s,`marca`= %s,`año`= %s,`kilometraje`= %s,`precio`= %s WHERE `onesco_autos`.`chasis` = '{}'".format(d1)
+                datos=(Chasis,Patente,Modelo,Marca,Año, KiloM, Precio)
+
+                cursor1.execute(sql, datos)
+                conexion1.commit()
+                conexion1.close()
+                textChasis.delete(0, END)
+                textPatente.delete(0, END)
+                textModelo.delete(0, END)
+                textMarca.delete(0, END)
+                textAño.delete(0, END)
+                textKlm.delete(0, END)
+                textPrecio.delete(0, END)
+                #textChasis.focus()  <-- Para hacer que esté esperando texto en chasis una vez enviado
+            else:
+                messagebox.showinfo(message="Hemos tenido problemas al intentar ingresar datos, por favor en AÑO y PRECIO introduce SOLO VALORES NUMERICOS, Sin Usar ni puntos ni comas", title="Problemas para ingresar datos")
+        
+        ingresarboton = Button(pes1, text="Guardar Datos", command=update_data_auto)
+        ingresarboton.grid(row="10", column="4")
+        raiz.mainloop()
+
+    def editar_fila():
+        conexion1=mysql.connector.connect(host="localhost", 
+                                  user="root", 
+                                  passwd="", 
+                                  database="onesco")
+
+        cursor1=conexion1.cursor()
+        curItem = lista.focus()
+        diccio = lista.item(curItem)
+
+        dic1=diccio.get('values')
+        chasis_1 = dic1[0]
+        patente_2 = dic1[1]
+        modelo_3 = dic1[2]
+        marca_4 = dic1[3]
+        año_5 = dic1[4]
+        kilometraje_6 = dic1[5]
+        precio_7 = dic1[6]
+
+        editar_formulario(chasis_1,patente_2,modelo_3,marca_4,año_5,kilometraje_6,precio_7)
+
+
+        conexion1.commit()
+    cursor1.close()
+
     volverButton = Button(miframe, text="Volver", command=volver)
     volverButton.grid(column=4, row=3,ipadx=5, ipady=5, padx=10, pady=10)
     BorrarButton = Button(miframe, text="Borrar Fila", command=eliminar_fila)
     BorrarButton.grid(column=5, row=3,ipadx=5, ipady=5, padx=10, pady=10)
+    EditarButton = Button(miframe, text="Editar Fila", command=editar_fila)
+    EditarButton.grid(column=6, row=3,ipadx=5, ipady=5, padx=10, pady=10)
 
 #============================================================================
